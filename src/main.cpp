@@ -29,11 +29,7 @@ int flipInt = 1;
 
 
 void YbuttonCode(){
-
-  Controller1.rumble(".");
   flipInt *= -1;
-  flipLock *= -1;
-
 }
 
 /*---------------------------------------------------------------------------*/
