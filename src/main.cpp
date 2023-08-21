@@ -26,7 +26,6 @@ competition Competition;
 
 // define your global instances of motors and other devices here
 int flipInt = 1;
-int flipLock = 1;
 
 
 void YbuttonCode(){
