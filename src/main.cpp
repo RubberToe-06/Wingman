@@ -11,10 +11,10 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // Controller1          controller                    
-// FLM                  motor         1               
-// FRM                  motor         2               
-// BLM                  motor         3               
-// BRM                  motor         4               
+// FLM                  motor         10              
+// FRM                  motor         20              
+// BLM                  motor         9               
+// BRM                  motor         19              
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
