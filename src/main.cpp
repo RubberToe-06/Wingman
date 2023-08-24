@@ -25,13 +25,6 @@ using namespace vex;
 competition Competition;
 
 // define your global instances of motors and other devices here
-int flipInt = 1;
-
-
-void YbuttonCode(){
-  // flips the robot
-  flipInt *= -1;
-}
 
 /*---------------------------------------------------------------------------*/
 /*                          Pre-Autonomous Functions                         */
@@ -46,9 +39,7 @@ void YbuttonCode(){
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
-
-  Brain.Screen.drawImageFromFile("wingmanlogo.png", 0, 0);
-
+  startScreenInit();
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
 }
@@ -65,7 +56,7 @@ void pre_auton(void) {
 
 void autonomous(void) {
   // ..........................................................................
-  // Insert autonomous user code here.
+  auton(1);
   // ..........................................................................
 }
 
@@ -103,6 +94,10 @@ void usercontrol(void) {
   }
 }
 
+void handleButtons(){
+  Controller1.ButtonY.pressed(YbuttonCode);
+}
+
 //
 // Main will set up the competition functions and callbacks.
 //
@@ -110,7 +105,7 @@ int main() {
   // Set up callbacks for autonomous and driver control periods.
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
-  Controller1.ButtonY.pressed(YbuttonCode);
+  handleButtons();
 
   // Run the pre-autonomous function.
   pre_auton();
