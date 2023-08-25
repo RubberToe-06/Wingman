@@ -42,7 +42,7 @@ void selectedLogic(int selectedAuton){
         Brain.Screen.drawImageFromFile("skills-auton-selected.png", 0, 0);
         wait(1.5, sec);
         Brain.Screen.clearScreen();
-        Brain.Screen.drawImageFromFile("wingman-blue.png", 0, 0);
+        Brain.Screen.drawImageFromFile("wingman-purple.png", 0, 0);
         break;
     default:
         break;
@@ -59,10 +59,10 @@ void startScreenInit(){
         selectedLogic(1);
     }
     else if (Brain.Screen.xPosition() < 120 && Brain.Screen.yPosition() > 120){
-        selectedLogic(2);
+        selectedLogic(3);
     }
     else if (Brain.Screen.xPosition() > 360 && Brain.Screen.yPosition() < 120){
-        selectedLogic(3);
+        selectedLogic(2);
     }
     else if (Brain.Screen.xPosition() > 360 && Brain.Screen.yPosition() > 120){
         selectedLogic(4);
