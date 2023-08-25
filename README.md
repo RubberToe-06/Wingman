@@ -35,4 +35,4 @@ We've participated in several VEX competitions, each offering valuable experienc
 
 ## Contact Us
 
-We love connecting with the robotics community! If you have any questions, suggestions, or just want to chat about robotics, feel free to reach out to us. You can contact RubberToe-06, the author of this README, at [drew.marino01@gmail.com](mailto:drew.marino01@gmail.com).
+We love connecting with the robotics community! If you have any questions, suggestions, or just want to chat about robotics, feel free to reach out to us. You can contact me at [drew.marino01@gmail.com](mailto:drew.marino01@gmail.com).
