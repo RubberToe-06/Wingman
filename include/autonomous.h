@@ -1,6 +1,8 @@
 #include "vex.h"
 #include "robot-config.h"
 
+float prevHeading;
+
 // All functions starting with "drive" are shorthands for repitition's sake
 
 // Shorthand for setting drivetrain velocities
@@ -35,7 +37,74 @@ void driveModes(brakeType type){
   BRM.setStopping(type);
 }
 
-// Code for autonomous period (WIP)
+// Used to make the robot drive forwards or backwards
+// Can specify direction, how long it drives for, and the velocity
+void autonDrive(char driveDirection, float timeSeconds, float driveVelocity)
+{
+  if (driveDirection == 'f')
+  {
+    driveVelocities(driveVelocity);
+    driveSpins(fwd,fwd,fwd,fwd);
+    wait(timeSeconds, seconds); 
+    driveStop();
+
+  }
+  else if (driveDirection == 'b')
+  {
+    driveVelocities(driveVelocity);
+    driveSpins(reverse, reverse, reverse, reverse);
+    wait(timeSeconds, seconds); 
+    driveStop();
+
+  }
+  else
+  {
+    Brain.Screen.print("error: invalid autonomous function argument");
+  }
+}
+
+// The most complex function in the whole program
+// Used to turn the robot clockwise (right) or counterclockwise (left)
+// Can specify the direction, how much it turns, and how fast it turns
+void autonTurn(char turnDirection, float turnAngle, float turnVelocity)
+{
+  driveModes(hold);
+
+  switch(turnDirection){
+    case 'r':
+    prevHeading = InertialSensor.heading(deg);
+    driveVelocities(turnVelocity);
+    driveSpins(forward, reverse, forward, reverse);
+
+    if (prevHeading + turnAngle < 360){
+      waitUntil(InertialSensor.heading(deg) > prevHeading + turnAngle);
+      driveStop(); return;
+    }
+    else{
+      waitUntil(InertialSensor.heading(deg) > 1 && InertialSensor.heading(deg) < 90);
+      waitUntil(InertialSensor.heading(deg) >= (prevHeading + turnAngle) - 360);
+      driveStop(); return;
+    }
+    
+
+    case 'l':
+    prevHeading = InertialSensor.heading(deg) + 1;
+    driveVelocities(turnVelocity);
+    driveSpins(reverse, forward,reverse,forward);
+
+    if (prevHeading - turnAngle > 0){
+      waitUntil(InertialSensor.heading(deg) <= prevHeading - turnAngle);
+      driveStop(); return;
+    }
+    else {
+      waitUntil(InertialSensor.heading(deg) > 350 && InertialSensor.heading(deg) <= 360);
+      waitUntil(InertialSensor.heading(deg) <= 360 - (turnAngle - prevHeading));
+      driveStop(); return;
+    }
+  }
+}
+
+// Code for autonomous period
 void autonCode(int version){
     switch (version)
     {

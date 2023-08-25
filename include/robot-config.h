@@ -8,6 +8,7 @@ extern motor FLM;
 extern motor FRM;
 extern motor BLM;
 extern motor BRM;
+extern inertial InertialSensor;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
