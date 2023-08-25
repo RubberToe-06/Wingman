@@ -18,6 +18,10 @@
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
+#include "robot-config.h"
+#include "autonomous.h"
+#include "button-controls.h"
+#include "start-screen.h"
 
 using namespace vex;
 
@@ -56,7 +60,7 @@ void pre_auton(void) {
 
 void autonomous(void) {
   // ..........................................................................
-  auton(auton);
+  autonCode(auton);
   // ..........................................................................
 }
 
