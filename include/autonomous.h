@@ -39,9 +39,9 @@ void driveModes(brakeType type){
 
 // Used to make the robot drive forwards or backwards
 // Can specify direction, how long it drives for, and the velocity
-void autonDrive(char driveDirection, float timeSeconds, float driveVelocity)
+void autonDrive(directionType driveDirection, float timeSeconds, float driveVelocity)
 {
-  if (driveDirection == 'f')
+  if (driveDirection == forward)
   {
     driveVelocities(driveVelocity);
     driveSpins(fwd,fwd,fwd,fwd);
@@ -49,7 +49,7 @@ void autonDrive(char driveDirection, float timeSeconds, float driveVelocity)
     driveStop();
 
   }
-  else if (driveDirection == 'b')
+  else if (driveDirection == reverse)
   {
     driveVelocities(driveVelocity);
     driveSpins(reverse, reverse, reverse, reverse);
@@ -66,12 +66,23 @@ void autonDrive(char driveDirection, float timeSeconds, float driveVelocity)
 // The most complex function in the whole program
 // Used to turn the robot clockwise (right) or counterclockwise (left)
 // Can specify the direction, how much it turns, and how fast it turns
-void autonTurn(char turnDirection, float turnAngle, float turnVelocity)
+void autonTurn(turnType turnDirection, float turnAngle, float turnVelocity)
 {
   driveModes(hold);
 
-  switch(turnDirection){
-    case 'r':
+  // Workaround for being unable to convert turnType to bool
+  bool boolDirection;
+
+  if (turnDirection == right){
+    boolDirection = true;
+  }
+  else {
+    boolDirection = false;
+  }
+
+
+  switch(boolDirection){
+    case true:
     prevHeading = InertialSensor.heading(deg);
     driveVelocities(turnVelocity);
     driveSpins(forward, reverse, forward, reverse);
@@ -87,10 +98,10 @@ void autonTurn(char turnDirection, float turnAngle, float turnVelocity)
     }
     
 
-    case 'l':
+    case false:
     prevHeading = InertialSensor.heading(deg) + 1;
     driveVelocities(turnVelocity);
-    driveSpins(reverse, forward,reverse,forward);
+    driveSpins(reverse, forward, reverse, forward);
 
     if (prevHeading - turnAngle > 0){
       waitUntil(InertialSensor.heading(deg) <= prevHeading - turnAngle);
@@ -104,19 +115,21 @@ void autonTurn(char turnDirection, float turnAngle, float turnVelocity)
   }
 }
 
-// Code for autonomous period
+// Code for autonomous period based off the selection screen
 void autonCode(int version){
-    switch (version)
-    {
-      case 1:
-        break;
-      case 2:
-        break;
-      case 3:
-        break;
-      case 4:
-        break;
-      default:
-        break;
+  switch (version)
+  {
+    case 1:
+      break;
+    case 2:
+      break;
+    case 3:
+      break;
+    case 4:
+      break;
+    case 5:
+      break;
+    default:
+      break;
     }
 }

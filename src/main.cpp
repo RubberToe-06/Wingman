@@ -98,10 +98,6 @@ void usercontrol(void) {
   }
 }
 
-void handleButtons(){
-  Controller1.ButtonY.pressed(YbuttonCode);
-}
-
 //
 // Main will set up the competition functions and callbacks.
 //
