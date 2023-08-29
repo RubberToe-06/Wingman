@@ -3,14 +3,6 @@
 
 int flipInt = 1;
 
-void handleButtons(){
-  // Controls the robot orientation
-  Controller1.ButtonY.pressed(YbuttonCode);
-
-  // Controls the push wings
-  Controller1.ButtonA.pressed(AbuttonCode);
-}
-
 //Flips the robot's controls to make it easier to use front and back manipulators
 void YbuttonCode(){
   flipInt *= -1;
@@ -26,4 +18,12 @@ void AbuttonCode(){
     leftWing.set(true);
     rightWing.set(true);
   }
+}
+
+void handleButtons(){
+  // Controls the robot orientation
+  Controller1.ButtonY.pressed(YbuttonCode);
+
+  // Controls the push wings
+  Controller1.ButtonA.pressed(AbuttonCode);
 }
