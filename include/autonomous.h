@@ -80,7 +80,6 @@ void autonTurn(turnType turnDirection, float turnAngle, float turnVelocity)
     boolDirection = false;
   }
 
-
   switch(boolDirection){
     case true:
     prevHeading = InertialSensor.heading(deg);

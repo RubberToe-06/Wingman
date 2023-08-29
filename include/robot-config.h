@@ -16,7 +16,7 @@ extern motor BRM;
 // Inertial sensor used to get the orientation of the robot
 extern inertial InertialSensor;
 
-// solenoids used to control the pushing wings
+// Solenoids used to control the pushing wings
 extern digital_out leftWing;
 extern digital_out rightWing;
 
