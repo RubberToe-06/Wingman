@@ -9,7 +9,9 @@ void YbuttonCode(){
 }
 
 // Toggles the wings on the sides of the robot
-void AbuttonCode(){
+void WingControls(void){
+  waitUntil(Controller1.ButtonL2.pressing() && Controller1.ButtonR2.pressing());
+
   if (leftWing.value()){
     leftWing.set(false);
     rightWing.set(false);
@@ -25,5 +27,6 @@ void handleButtons(){
   Controller1.ButtonY.pressed(YbuttonCode);
 
   // Controls the push wings
-  Controller1.ButtonA.pressed(AbuttonCode);
+  Controller1.ButtonL2.pressed(WingControls);
+  Controller1.ButtonR2.pressed(WingControls);
 }
