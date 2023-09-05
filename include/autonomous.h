@@ -3,7 +3,8 @@
 
 float prevHeading;
 
-float wheelCircum = 12.566;
+float wheelCircum = 10;
+int degreesToSpin;
 
 // All functions starting with "drive" are shorthands for repitition's sake
 
@@ -45,23 +46,25 @@ void autonDrive(directionType driveDirection, float distance, float driveVelocit
 {
   if (driveDirection == forward)
   {
-    int degreesToSpin = (distance * (1/wheelCircum) * 360)
+    degreesToSpin = (distance * (1/wheelCircum) * 360);
     driveVelocities(driveVelocity);
-    FLM.spinfor(fwd, degreesToSpin, deg);
-    FRM.spinfor(fwd, degreesToSpin, deg);
-    BLM.spinfor(fwd, degreesToSpin, deg);
-    BRM.spinfor(fwd, degreesToSpin, deg);
+    FLM.spinFor(fwd, degreesToSpin, deg, false);
+    FRM.spinFor(fwd, degreesToSpin, deg, false);
+    BLM.spinFor(fwd, degreesToSpin, deg, false);
+    BRM.spinFor(fwd, degreesToSpin, deg, false);
+    waitUntil(InertialSensor.acceleration(xaxis) > 3);
+    waitUntil(InertialSensor.acceleration(xaxis) < 3);
     driveStop();
 
   }
   else if (driveDirection == reverse)
   {
-    int degreesToSpin = (distance * (1/wheelCircum) * 360)
+    degreesToSpin = (distance * (1/wheelCircum) * 360);
     driveVelocities(driveVelocity);
-    FLM.spinfor(reverse, degreesToSpin, deg);
-    FRM.spinfor(reverse, degreesToSpin, deg);
-    BLM.spinfor(reverse, degreesToSpin, deg);
-    BRM.spinfor(reverse, degreesToSpin, deg);
+    FLM.spinFor(reverse, degreesToSpin, deg);
+    FRM.spinFor(reverse, degreesToSpin, deg);
+    BLM.spinFor(reverse, degreesToSpin, deg);
+    BRM.spinFor(reverse, degreesToSpin, deg);
     driveStop();
 
   }
@@ -127,6 +130,7 @@ void autonCode(int version){
   switch (version)
   {
     case 1:
+      autonTurn(right, 180, 20);
       break;
     case 2:
       break;
