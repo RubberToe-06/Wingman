@@ -17,12 +17,12 @@ void selectedLogic(int selectedAuton){
     case 2:
         Brain.Screen.drawImageFromFile("auton2-selected.png", 0, 0);
         wait(1.5, sec);
-        Brain.Screen.drawImageFromFile("wingman-red.png", 0, 0);
+        Brain.Screen.drawImageFromFile("wingman-blue.png", 0, 0);
         break;
     case 3:
         Brain.Screen.drawImageFromFile("auton3-selected.png", 0, 0);
         wait(1.5, sec);
-        Brain.Screen.drawImageFromFile("wingman-blue.png", 0, 0);
+        Brain.Screen.drawImageFromFile("wingman-red.png", 0, 0);
         break;
     case 4:
         Brain.Screen.drawImageFromFile("auton4-selected.png", 0, 0);
