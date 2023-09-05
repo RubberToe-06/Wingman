@@ -65,6 +65,8 @@ void autonDrive(directionType driveDirection, float distance, float driveVelocit
     FRM.spinFor(reverse, degreesToSpin, deg);
     BLM.spinFor(reverse, degreesToSpin, deg);
     BRM.spinFor(reverse, degreesToSpin, deg);
+    waitUntil(InertialSensor.acceleration(xaxis) > 3);
+    waitUntil(InertialSensor.acceleration(xaxis) < 3);
     driveStop();
 
   }
