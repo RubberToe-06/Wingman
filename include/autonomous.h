@@ -3,6 +3,8 @@
 
 float prevHeading;
 
+float wheelCircum = 12.566;
+
 // All functions starting with "drive" are shorthands for repitition's sake
 
 // Shorthand for setting drivetrain velocities
@@ -39,21 +41,27 @@ void driveModes(brakeType type){
 
 // Used to make the robot drive forwards or backwards
 // Can specify direction, how long it drives for, and the velocity
-void autonDrive(directionType driveDirection, float timeSeconds, float driveVelocity)
+void autonDrive(directionType driveDirection, float distance, float driveVelocity)
 {
   if (driveDirection == forward)
   {
+    int degreesToSpin = (distance * (1/wheelCircum) * 360)
     driveVelocities(driveVelocity);
-    driveSpins(fwd,fwd,fwd,fwd);
-    wait(timeSeconds, seconds); 
+    FLM.spinfor(fwd, degreesToSpin, deg);
+    FRM.spinfor(fwd, degreesToSpin, deg);
+    BLM.spinfor(fwd, degreesToSpin, deg);
+    BRM.spinfor(fwd, degreesToSpin, deg);
     driveStop();
 
   }
   else if (driveDirection == reverse)
   {
+    int degreesToSpin = (distance * (1/wheelCircum) * 360)
     driveVelocities(driveVelocity);
-    driveSpins(reverse, reverse, reverse, reverse);
-    wait(timeSeconds, seconds); 
+    FLM.spinfor(reverse, degreesToSpin, deg);
+    FRM.spinfor(reverse, degreesToSpin, deg);
+    BLM.spinfor(reverse, degreesToSpin, deg);
+    BRM.spinfor(reverse, degreesToSpin, deg);
     driveStop();
 
   }
