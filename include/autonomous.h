@@ -9,6 +9,7 @@ int degreesToSpin;
 // All functions starting with "drive" are shorthands for repitition's sake
 
 // Shorthand for setting drivetrain velocities
+// @param number how fast the drivetrain will drive
 void driveVelocities(float number){
   FLM.setVelocity(number, pct);
   FRM.setVelocity(number, pct);
@@ -33,6 +34,7 @@ void driveSpins(directionType FLMr, directionType FRMr, directionType BLMr, dire
 }
 
 // Shorthand for setting a drivetrain stopping mode
+// @param type what type of stopping mode the drivetrain switches to
 void driveModes(brakeType type){
   FLM.setStopping(type);
   FRM.setStopping(type);
@@ -40,8 +42,10 @@ void driveModes(brakeType type){
   BRM.setStopping(type);
 }
 
-// Used to make the robot drive forwards or backwards
-// Can specify direction, how long it drives for, and the velocity
+// Drives the robot in a straight line during autonomous
+// @param driveDirection determines if the robot will drive forwards or backwards
+// @param distance tells the robot how far to drive (in inches)
+// @param driveVelocity specifies how fast the robot will drive
 void autonDrive(directionType driveDirection, float distance, float driveVelocity)
 {
   if (driveDirection == forward)
@@ -76,9 +80,11 @@ void autonDrive(directionType driveDirection, float distance, float driveVelocit
   }
 }
 
-// The most complex function in the whole program
-// Used to turn the robot clockwise (right) or counterclockwise (left)
-// Can specify the direction, how much it turns, and how fast it turns
+
+// Turns the robot during autonomous
+// @param turnDirection specifies wether the robot turns left or right
+// @param turnAngle specifies how many degrees the robot will turn
+// @param turnVelocity determines how fast the robot will turn
 void autonTurn(turnType turnDirection, float turnAngle, float turnVelocity)
 {
   driveModes(hold);
@@ -127,12 +133,19 @@ void autonTurn(turnType turnDirection, float turnAngle, float turnVelocity)
   }
 }
 
+// Opens or closes the wings during autonomous
+// @param value specifies what value the solenoids will be set to
+void autonSetWings(bool value){
+  leftWing.set(value);
+  rightWing.set(value);
+}
+
 // Code for autonomous period based off the selection screen
+// @param version which version of the autonomous code the driver selects
 void autonCode(int version){
   switch (version)
   {
     case 1:
-      autonTurn(right, 180, 20);
       break;
     case 2:
       break;

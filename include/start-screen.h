@@ -3,6 +3,8 @@
 
 int auton;
 
+// Handles the screen printing logic for every possible selection
+// @param selectedAuton which auton the driver selected
 void selectedLogic(int selectedAuton){
 
     auton = selectedAuton;
@@ -40,7 +42,7 @@ void selectedLogic(int selectedAuton){
 
 }
 
-// Initializes the start screen for the autonomous selection (WIP)
+// Initializes the start screen for the autonomous selection
 void startScreenInit(){
     Brain.Screen.drawImageFromFile("selection-screen.png", 0, 0);
     waitUntil(Brain.Screen.pressing());
