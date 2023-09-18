@@ -17,6 +17,7 @@ inertial InertialSensor = inertial(PORT18);
 digital_out leftWing = digital_out(Brain.ThreeWirePort.A);
 digital_out rightWing = digital_out(Brain.ThreeWirePort.B);
 motor Intake = motor(PORT17, ratio18_1, false);
+motor Launcher = motor(PORT1, ratio18_1, false);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable

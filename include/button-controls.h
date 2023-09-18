@@ -58,6 +58,14 @@ void RevIntakeControls(void){
   }
 }
 
+void LauncherControls(void){
+  Launcher.setVelocity(100, pct);
+  Launcher.spin(forward);
+  waitUntil(!Controller1.ButtonX.pressing());
+  waitUntil(Controller1.ButtonX.pressing());
+  Launcher.stop();
+}
+
 void handleButtons(){
   // Controls the robot orientation
   Controller1.ButtonY.pressed(FlipControls);
@@ -69,4 +77,7 @@ void handleButtons(){
   // Toggles the intake motor
   Controller1.ButtonA.pressed(IntakeControls);
   Controller1.ButtonB.pressed(IntakeControls);
+
+  // Toggles the Triball launcher
+  Controller1.ButtonX.pressed(LauncherControls);
 }
