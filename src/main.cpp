@@ -25,7 +25,7 @@
 #include "robot-config.h"
 #include "autonomous.h"
 #include "button-controls.h"
-#include "start-screen.h"
+#include "start-screen.hpp"
 
 using namespace vex;
 
