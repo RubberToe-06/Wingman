@@ -4,7 +4,7 @@
 int flipInt = 1;
 
 //Flips the robot's controls to make it easier to use front and back manipulators
-void YbuttonCode(){
+void FlipControls(){
   flipInt *= -1;
 }
 
@@ -22,18 +22,45 @@ void WingControls(void){
   }
 }
 
-// Toggles the intake motor
+// Toggles the intake motor forwards or reverse
 void IntakeControls(void){
   Intake.setVelocity(100, pct);
-  Intake.spin(fwd);
+  Intake.spin(forward);
   waitUntil(!Controller1.ButtonA.pressing());
-  waitUntil(Controller1.ButtonA.pressing());
-  Intake.stop();
+  waitUntil(Controller1.ButtonA.pressing() || Controller1.ButtonB.pressing());
+  if (Controller1.ButtonA.pressing()){
+    Intake.stop();
+  }
+  else{
+    Intake.setVelocity(100, pct);
+    Intake.spin(reverse);
+    waitUntil(!Controller1.ButtonB.pressing());
+    waitUntil(Controller1.ButtonB.pressing() || Controller1.ButtonA.pressing());
+    if (Controller1.ButtonB.pressing()){
+      Intake.stop();
+    }
+    else{
+      IntakeControls();
+    }
+  }
+}
+
+void RevIntakeControls(void){
+  Intake.setVelocity(100, pct);
+  Intake.spin(reverse);
+  waitUntil(!Controller1.ButtonB.pressing());
+  waitUntil(Controller1.ButtonB.pressing() || Controller1.ButtonA.pressing());
+  if (Controller1.ButtonB.pressing()){
+    Intake.stop();
+  }
+  else{
+    IntakeControls();
+  }
 }
 
 void handleButtons(){
   // Controls the robot orientation
-  Controller1.ButtonY.pressed(YbuttonCode);
+  Controller1.ButtonY.pressed(FlipControls);
 
   // Controls the push wings
   Controller1.ButtonL2.pressed(WingControls);
@@ -41,4 +68,5 @@ void handleButtons(){
 
   // Toggles the intake motor
   Controller1.ButtonA.pressed(IntakeControls);
+  Controller1.ButtonB.pressed(IntakeControls);
 }

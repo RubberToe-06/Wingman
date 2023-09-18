@@ -14,7 +14,11 @@
 // FLM                  motor         10              
 // FRM                  motor         20              
 // BLM                  motor         9               
-// BRM                  motor         19              
+// BRM                  motor         19  
+// Intake               motor         17    
+// InertialSensor       inertial      18
+// leftWing             digital_out   A
+// rightWing            digital_out   B    
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
