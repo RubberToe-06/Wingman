@@ -4,6 +4,7 @@
 
 int auton;
 
+// Class for all buttons on the Bain UI
 class screenButton {
 public:
     int X_min;
@@ -50,6 +51,7 @@ public:
     }
 };
 
+// Initializes all button objects
 screenButton auton1Button = screenButton.createScreenButton(0, 120, 0, 120);
 screenButton auton2Button = screenButton.createScreenButton(360, 480, 0, 120);
 screenButton auton3Button = screenButton.createScreenButton(0, 120, 120, 240);
