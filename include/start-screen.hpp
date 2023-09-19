@@ -52,11 +52,11 @@ public:
 };
 
 // Initializes all button objects
-screenButton auton1Button = screenButton.createScreenButton(0, 120, 0, 120);
-screenButton auton2Button = screenButton.createScreenButton(360, 480, 0, 120);
-screenButton auton3Button = screenButton.createScreenButton(0, 120, 120, 240);
-screenButton auton4Button = screenButton.createScreenButton(360, 480, 120, 240);
-screenButton auton5Button = screenButton.createScreenButton(120, 360, 0, 240);
+screenButton auton1Button = screenButton::createScreenButton(0, 120, 0, 120);
+screenButton auton2Button = screenButton::createScreenButton(360, 480, 0, 120);
+screenButton auton3Button = screenButton::createScreenButton(0, 120, 120, 240);
+screenButton auton4Button = screenButton::createScreenButton(360, 480, 120, 240);
+screenButton auton5Button = screenButton::createScreenButton(120, 360, 0, 240);
 
 // Handles the screen printing logic for every possible selection
 // @param selectedAuton which auton the driver selected
