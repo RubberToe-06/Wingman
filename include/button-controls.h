@@ -25,7 +25,7 @@ void WingControls(void){
 // Toggles the intake motor forwards or reverse
 void IntakeControls(void){
   Intake.setVelocity(100, pct);
-  Intake.spin(forward);
+  Intake.spin(reverse);
   waitUntil(!Controller1.ButtonA.pressing());
   waitUntil(Controller1.ButtonA.pressing() || Controller1.ButtonB.pressing());
   if (Controller1.ButtonA.pressing()){
@@ -33,7 +33,7 @@ void IntakeControls(void){
   }
   else{
     Intake.setVelocity(100, pct);
-    Intake.spin(reverse);
+    Intake.spin(forward);
     waitUntil(!Controller1.ButtonB.pressing());
     waitUntil(Controller1.ButtonB.pressing() || Controller1.ButtonA.pressing());
     if (Controller1.ButtonB.pressing()){
@@ -47,7 +47,7 @@ void IntakeControls(void){
 
 void RevIntakeControls(void){
   Intake.setVelocity(100, pct);
-  Intake.spin(reverse);
+  Intake.spin(forward);
   waitUntil(!Controller1.ButtonB.pressing());
   waitUntil(Controller1.ButtonB.pressing() || Controller1.ButtonA.pressing());
   if (Controller1.ButtonB.pressing()){
@@ -75,7 +75,7 @@ void handleButtons(){
   Controller1.ButtonR2.pressed(WingControls);
 
   // Toggles the intake motor
-  Controller1.ButtonA.pressed(IntakeControls);
+  Controller1.ButtonA.pressed(RevIntakeControls);
   Controller1.ButtonB.pressed(IntakeControls);
 
   // Toggles the Triball launcher
