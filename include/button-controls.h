@@ -23,38 +23,30 @@ void WingControls(void){
 }
 
 // Toggles the intake motor forwards or reverse
-void IntakeControls(void){
+void IntakeControls(){
+  Intake.setStopping(hold);
   Intake.setVelocity(100, pct);
-  Intake.spin(reverse);
-  waitUntil(!Controller1.ButtonA.pressing());
-  waitUntil(Controller1.ButtonA.pressing() || Controller1.ButtonB.pressing());
   if (Controller1.ButtonA.pressing()){
-    Intake.stop();
-  }
-  else{
-    Intake.setVelocity(100, pct);
     Intake.spin(forward);
-    waitUntil(!Controller1.ButtonB.pressing());
-    waitUntil(Controller1.ButtonB.pressing() || Controller1.ButtonA.pressing());
+    waitUntil(!Controller1.ButtonA.pressing());
+    waitUntil((Controller1.ButtonA.pressing() || Controller1.ButtonB.pressing()) || Intake.torque(Nm) > 90);
     if (Controller1.ButtonB.pressing()){
-      Intake.stop();
-    }
-    else{
       IntakeControls();
     }
+    else{
+      Intake.stop();
+    }
   }
-}
-
-void RevIntakeControls(void){
-  Intake.setVelocity(100, pct);
-  Intake.spin(forward);
-  waitUntil(!Controller1.ButtonB.pressing());
-  waitUntil(Controller1.ButtonB.pressing() || Controller1.ButtonA.pressing());
-  if (Controller1.ButtonB.pressing()){
-    Intake.stop();
-  }
-  else{
-    IntakeControls();
+  else if (Controller1.ButtonB.pressing()){
+    Intake.spin(reverse);
+    waitUntil(!Controller1.ButtonB.pressing());
+    waitUntil((Controller1.ButtonB.pressing() || Controller1.ButtonA.pressing()) || Intake.torque(Nm) > 90);
+    if (Controller1.ButtonA.pressing()){
+      IntakeControls();
+    }
+    else{
+      Intake.stop();
+    }
   }
 }
 
@@ -75,7 +67,7 @@ void handleButtons(){
   Controller1.ButtonR2.pressed(WingControls);
 
   // Toggles the intake motor
-  Controller1.ButtonA.pressed(RevIntakeControls);
+  Controller1.ButtonA.pressed(IntakeControls);
   Controller1.ButtonB.pressed(IntakeControls);
 
   // Toggles the Triball launcher
