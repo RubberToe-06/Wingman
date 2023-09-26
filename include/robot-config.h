@@ -23,9 +23,8 @@ extern digital_out rightWing;
 // Motor for the Triball intake
 extern motor Intake;
 
-// Motors for the Triball launcher
-extern motor Launcher1;
-extern motor Launcher2;
+// Motor for the Triball launcher
+extern motor Launcher;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
