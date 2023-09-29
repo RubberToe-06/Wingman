@@ -51,7 +51,7 @@ void IntakeControls(){
 }
 
 void LauncherControls(void){
-  Launcher.setVelocity(100, pct);
+  Launcher.setVelocity(25, pct);
   Launcher.spin(forward);
   waitUntil(!Controller1.ButtonX.pressing());
   waitUntil(Controller1.ButtonX.pressing());
