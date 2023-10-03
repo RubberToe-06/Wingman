@@ -10,15 +10,21 @@ void FlipControls(){
 
 // Toggles the wings on the sides of the robot
 void WingControls(void){
-  waitUntil(Controller1.ButtonL2.pressing() && Controller1.ButtonR2.pressing());
-
-  if (leftWing.value()){
-    leftWing.set(false);
-    rightWing.set(false);
+  if (Controller1.ButtonL2.pressing()){
+    if (leftWing.value()){
+      leftWing.set(false);
+    }
+    else {
+      leftWing.set(true);
+    }
   }
-  else{
-    leftWing.set(true);
-    rightWing.set(true);
+  if (Controller1.ButtonR2.pressing()){
+    if (rightWing.value()){
+      rightWing.set(false);
+    }
+    else {
+      rightWing.set(true);
+    }
   }
 }
 
