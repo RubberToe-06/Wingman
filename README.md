@@ -2,7 +2,7 @@
 
 ![Wingman Logo](logo.png)
 
-Welcome to the official repository of VEX Robotics Team 36830Z - Wingman! This repository contains all the code for the robot and all the extra resources we use.
+Welcome to the official repository of VEX Robotics Team 36830Z - Wingman! This repository contains all the code for the robot and all the extra resources we use. This repository is purely to document code changes and to provide an example of what "professional" robot code looks like to other VRC teams. Thus, we will not be accepting pull requests. 
 
 ## About Us
 
