@@ -1,11 +1,12 @@
 #include "vex.h"
-#include "robot-config.h"
+#include "button-controls.hpp"
 
-int flipInt = 1;
+int flipInteger = 1;
 
 //Flips the robot's controls to make it easier to use front and back manipulators
-void FlipControls(){
-  flipInt *= -1;
+void FlipControls(){  
+  flipInteger *= -1;
+  Controller1.rumble(".");
 }
 
 // Toggles the wings on the sides of the robot
@@ -56,6 +57,7 @@ void IntakeControls(){
   }
 }
 
+// Controls the triball launcher
 void LauncherControls(void){
   Launcher.setVelocity(45, pct);
   Launcher.spin(forward);
@@ -64,7 +66,8 @@ void LauncherControls(void){
   Launcher.stop();
 }
 
-void handleButtons(){
+// Handles the callback functions for the controller buttons
+void handleButtons(void){
   // Controls the robot orientation
   Controller1.ButtonY.pressed(FlipControls);
 

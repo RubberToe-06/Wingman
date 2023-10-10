@@ -1,45 +1,42 @@
 #include "vex.h"
-#include "robot-config.h"
+#include "autonomous.hpp"
 
 float prevHeading;
-
 float wheelCircum = 10;
 int degreesToSpin;
 
-// All functions starting with "drive" are shorthands for repitition's sake
-
 // Shorthand for setting drivetrain velocities
 // @param number how fast the drivetrain will drive
-void driveVelocities(float number){
-  FLM.setVelocity(number, pct);
-  FRM.setVelocity(number, pct);
-  BLM.setVelocity(number, pct);
-  BRM.setVelocity(number, pct);
+void driveVelocities(float number) {
+    FLM.setVelocity(number, pct);
+    FRM.setVelocity(number, pct);
+    BLM.setVelocity(number, pct);
+    BRM.setVelocity(number, pct);
 }
 
 // Shorthand for stopping the drivetrain
-void driveStop(){
-  FLM.stop();
-  FRM.stop();
-  BLM.stop();
-  BRM.stop();
+void driveStop() {
+    FLM.stop();
+    FRM.stop();
+    BLM.stop();
+    BRM.stop();
 }
 
-// Shorthand for activating the drivetrain
-void driveSpins(directionType FLMr, directionType FRMr, directionType BLMr, directionType BRMr){
-  FLM.spin(FLMr);
-  FRM.spin(FRMr);
-  BLM.spin(BLMr);
-  BRM.spin(BRMr);
+// Shorthand for activating the drivetrain motors all at once
+void driveSpins(directionType FLMr, directionType FRMr, directionType BLMr, directionType BRMr) {
+    FLM.spin(FLMr);
+    FRM.spin(FRMr);
+    BLM.spin(BLMr);
+    BRM.spin(BRMr);
 }
 
 // Shorthand for setting a drivetrain stopping mode
 // @param type what type of stopping mode the drivetrain switches to
-void driveModes(brakeType type){
-  FLM.setStopping(type);
-  FRM.setStopping(type);
-  BLM.setStopping(type);
-  BRM.setStopping(type);
+void driveModes(brakeType type) {
+    FLM.setStopping(type);
+    FRM.setStopping(type);
+    BLM.setStopping(type);
+    BRM.setStopping(type);
 }
 
 // Drives the robot in a straight line during autonomous
@@ -79,7 +76,6 @@ void autonDrive(directionType driveDirection, float distance, float driveVelocit
     Brain.Screen.print("error: invalid autonomous function argument");
   }
 }
-
 
 // Turns the robot during autonomous
 // @param turnDirection specifies wether the robot turns left or right
@@ -135,9 +131,9 @@ void autonTurn(turnType turnDirection, float turnAngle, float turnVelocity)
 
 // Opens or closes the wings during autonomous
 // @param value specifies what value the solenoids will be set to
-void autonSetWings(bool value){
-  leftWing.set(value);
-  rightWing.set(value);
+void autonSetWings(bool value) {
+    leftWing.set(value);
+    rightWing.set(value);
 }
 
 // Code for autonomous period based off the selection screen
