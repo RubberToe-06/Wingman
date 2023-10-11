@@ -1,11 +1,11 @@
 #include "vex.h"
 #include "button-controls.hpp"
 
-int flipInteger = 1;
+int flipInt = 1;
 
 //Flips the robot's controls to make it easier to use front and back manipulators
 void FlipControls(){  
-  flipInteger *= -1;
+  flipInt *= -1;
   Controller1.rumble(".");
 }
 

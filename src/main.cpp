@@ -87,10 +87,10 @@ void usercontrol(void) {
     // values based on feedback from the joysticks.
 
     // ........................................................................
-    FLM.setVelocity((Controller1.Axis3.position() * flipInteger + Controller1.Axis1.position()), percent);
-    FRM.setVelocity((Controller1.Axis3.position() * flipInteger - Controller1.Axis1.position()), percent);
-    BLM.setVelocity((Controller1.Axis3.position() * flipInteger + Controller1.Axis1.position()), percent);
-    BRM.setVelocity((Controller1.Axis3.position() * flipInteger - Controller1.Axis1.position()), percent);
+    FLM.setVelocity((Controller1.Axis3.position() * flipInt + Controller1.Axis1.position()), percent);
+    FRM.setVelocity((Controller1.Axis3.position() * flipInt - Controller1.Axis1.position()), percent);
+    BLM.setVelocity((Controller1.Axis3.position() * flipInt + Controller1.Axis1.position()), percent);
+    BRM.setVelocity((Controller1.Axis3.position() * flipInt - Controller1.Axis1.position()), percent);
     FLM.spin(forward);
     FRM.spin(forward);
     BLM.spin(forward);

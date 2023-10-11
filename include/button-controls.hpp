@@ -4,12 +4,12 @@
 #include "vex.h"
 #include "robot-config.h"
 
-extern int flipInteger;
+extern int flipInt;
 
 // Current mapped button(s): Y
 void FlipControls(void);
 
-// Current mapped button(s): L1 + L2
+// Current mapped button(s): L2 + R2
 void WingControls(void);
 
 // Current mapped button(s): A
