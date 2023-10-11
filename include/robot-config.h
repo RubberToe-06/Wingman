@@ -26,6 +26,9 @@ extern motor Intake;
 // Motor for the Triball launcher
 extern motor Launcher;
 
+// Motor for the elevation arm
+extern motor Elevator;
+
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
  * 

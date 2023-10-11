@@ -66,6 +66,22 @@ void LauncherControls(void){
   Launcher.stop();
 }
 
+// Controls the elevation arm
+void ElevatorControls(){
+  if (Controller1.ButtonUp.pressing()){
+    Elevator.spin(forward);
+    waitUntil(!Controller1.ButtonUp.pressing());
+    waitUntil(Controller1.ButtonUp.pressing());
+    Elevator.stop();
+  }
+  else if (Controller1.ButtonDown.pressing()){
+    Elevator.spin(reverse);
+    waitUntil(!Controller1.ButtonDown.pressing());
+    waitUntil(Controller1.ButtonDown.pressing());
+    Elevator.stop();
+  }
+}
+
 // Handles the callback functions for the controller buttons
 void handleButtons(void){
   // Controls the robot orientation
@@ -81,4 +97,8 @@ void handleButtons(void){
 
   // Toggles the Triball launcher
   Controller1.ButtonX.pressed(LauncherControls);
+
+  // Controls the Elevation arm
+  Controller1.ButtonUp.pressed(ElevatorControls);
+  Controller1.ButtonDown.pressed(ElevatorControls);
 }
