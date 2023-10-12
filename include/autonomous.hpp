@@ -5,7 +5,7 @@
 #include "robot-config.h"
 
 extern float prevHeading;
-extern float wheelCircum;
+extern const float wheelCircum;
 extern int degreesToSpin;
 
 // Drivetrain configuration functions

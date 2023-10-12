@@ -1,8 +1,9 @@
 #include "vex.h"
 #include "autonomous.hpp"
 
+// Defining used variables
 float prevHeading;
-float wheelCircum = 10;
+const float wheelCircum = 10;
 int degreesToSpin;
 
 // Shorthand for setting drivetrain velocities
@@ -136,20 +137,49 @@ void autonSetWings(bool value) {
     rightWing.set(value);
 }
 
+// Auton code that scores blue alliance Triball and 2 green Triballs
+void auton1Code(){
+
+}
+
+// Auton code that scores blue alliance Triball and gets the autonomous win point
+void auton2Code(){
+
+}
+
+// Auton code that scores red alliance Triball and gets the autonomous win point
+void auton3Code(){
+
+}
+
+// Auton code that scores red alliance Triball and 2 green Triballs
+void auton4Code(){
+
+}
+
+// Auton code for the Programming Skills Challenge
+void autonSKcode(){
+
+}
 // Code for autonomous period based off the selection screen
 // @param version which version of the autonomous code the driver selects
 void autonCode(int version){
   switch (version)
   {
     case 1:
+      auton1Code();
       break;
     case 2:
+      auton2Code();
       break;
     case 3:
+      auton3Code();
       break;
     case 4:
+      auton4Code();
       break;
     case 5:
+      autonSKcode();
       break;
     default:
       break;
