@@ -85,9 +85,9 @@ void StartScreenInit() {
     if (Auton1Button.isPressing()) {
         SelectedLogic(1);
     } else if (Auton2Button.isPressing()) {
-        SelectedLogic(3);
-    } else if (Auton3Button.isPressing()) {
         SelectedLogic(2);
+    } else if (Auton3Button.isPressing()) {
+        SelectedLogic(3);
     } else if (Auton4Button.isPressing()) {
         SelectedLogic(4);
     } else if (Auton5Button.isPressing()) {
