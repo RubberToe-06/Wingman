@@ -53,24 +53,16 @@ void autonDrive(directionType driveDirection, float distance, float driveVelocit
     FLM.spinFor(fwd, degreesToSpin, deg, false);
     FRM.spinFor(fwd, degreesToSpin, deg, false);
     BLM.spinFor(fwd, degreesToSpin, deg, false);
-    BRM.spinFor(fwd, degreesToSpin, deg, false);
-    waitUntil(InertialSensor.acceleration(xaxis) > 3);
-    waitUntil(InertialSensor.acceleration(xaxis) < 3);
-    driveStop();
-
+    BRM.spinFor(fwd, degreesToSpin, deg, true);
   }
   else if (driveDirection == reverse)
   {
     degreesToSpin = (distance * (1/wheelCircum) * 360);
     driveVelocities(driveVelocity);
-    FLM.spinFor(reverse, degreesToSpin, deg);
-    FRM.spinFor(reverse, degreesToSpin, deg);
-    BLM.spinFor(reverse, degreesToSpin, deg);
-    BRM.spinFor(reverse, degreesToSpin, deg);
-    waitUntil(InertialSensor.acceleration(xaxis) > 3);
-    waitUntil(InertialSensor.acceleration(xaxis) < 3);
-    driveStop();
-
+    FLM.spinFor(reverse, degreesToSpin, deg, false);
+    FRM.spinFor(reverse, degreesToSpin, deg, false);
+    BLM.spinFor(reverse, degreesToSpin, deg, false);
+    BRM.spinFor(reverse, degreesToSpin, deg, true);
   }
   else
   {
@@ -137,14 +129,23 @@ void autonSetWings(bool value) {
     rightWing.set(value);
 }
 
+// AUTONOMOUS ROUTINES
+
+//........................................................................................
+
 // Auton code that scores blue alliance Triball and 2 green Triballs
 void auton1Code(){
-
+  autonDrive(forward, 52, 60);
+  autonTurn(right, 90, 45);
+  Intake.spin(reverse, 100, pct);
+  wait(0.5, sec);
+  Intake.stop();
+  autonDrive(fwd, 15, 100);
 }
 
 // Auton code that scores blue alliance Triball and gets the autonomous win point
 void auton2Code(){
-
+  
 }
 
 // Auton code that scores red alliance Triball and gets the autonomous win point
@@ -161,6 +162,9 @@ void auton4Code(){
 void autonSKcode(){
 
 }
+
+//........................................................................................
+
 // Code for autonomous period based off the selection screen
 // @param version which version of the autonomous code the driver selects
 void autonCode(int version){
