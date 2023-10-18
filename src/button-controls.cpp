@@ -59,7 +59,7 @@ void IntakeControls(){
 
 // Controls the triball launcher
 void LauncherControls(void){
-  Launcher.setVelocity(45, pct);
+  Launcher.setVelocity(70, pct);
   Launcher.spin(forward);
   waitUntil(!Controller1.ButtonX.pressing());
   waitUntil(Controller1.ButtonX.pressing());
