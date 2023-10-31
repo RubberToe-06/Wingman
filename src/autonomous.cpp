@@ -93,7 +93,7 @@ void autonTurn(turnType turnDirection, float turnAngle, float turnVelocity)
     prevHeading = InertialSensor.heading(deg);
     driveVelocities(turnVelocity);
     driveSpins(forward, reverse, forward, reverse);
-
+    wait(0.2, sec);
     if (prevHeading + turnAngle < 360){
       waitUntil(InertialSensor.heading(deg) > prevHeading + turnAngle);
       driveStop(); return;
@@ -106,10 +106,10 @@ void autonTurn(turnType turnDirection, float turnAngle, float turnVelocity)
     
 
     case false:
-    prevHeading = InertialSensor.heading(deg) + 1;
+    prevHeading = InertialSensor.heading(deg);
     driveVelocities(turnVelocity);
     driveSpins(reverse, forward, reverse, forward);
-
+    wait(0.2, sec);
     if (prevHeading - turnAngle > 0){
       waitUntil(InertialSensor.heading(deg) <= prevHeading - turnAngle);
       driveStop(); return;
@@ -133,57 +133,65 @@ void autonSetWings(bool value) {
 
 //........................................................................................
 
-// Auton code that scores blue alliance Triball and 2 green Triballs
-void auton1Code(){
-  autonDrive(forward, 52, 60);
-  autonTurn(right, 90, 45);
+// Autonomous routine for playing on the offensive side
+void OffensiveAutonCode(){
+  Intake.setStopping(hold);
+  autonDrive(forward, 55, 70);
+  autonTurn(right, 90, 50);
+  Intake.spin(reverse, 100, pct);
+  wait(0.5, sec);
+  Intake.stop();
+  autonDrive(fwd, 5, 70);
+  autonDrive(reverse, 5, 70);
+  autonTurn(left, 145, 50);
+  Intake.spin(fwd, 100, pct);
+  autonDrive(forward, 15, 70);
+  wait(0.75, sec);
+  Intake.stop();
+  autonTurn(right, 140, 50);
+  autonDrive(forward, 16, 70);
+  Intake.spin(reverse, 100, pct);
+  wait(0.5, sec);
+  Intake.stop();
+  autonDrive(forward, 4, 70);
+  autonDrive(reverse, 4, 70);
+} 
+
+// Autonomous routine for playing on the defensive side
+void DefensiveAutonCode(){
+  autonDrive(forward, 55, 60);
+  autonTurn(right, 62, 45);
   Intake.spin(reverse, 100, pct);
   wait(0.5, sec);
   Intake.stop();
   autonDrive(fwd, 15, 100);
 }
 
-// Auton code that scores blue alliance Triball and gets the autonomous win point
-void auton2Code(){
-  
+// Autonomous routine for the Programming Skills Challenge
+void SkillsAutonCode(){
+  autonDrive(forward, 24, 25);
+  autonTurn(right, 90, 25);
 }
-
-// Auton code that scores red alliance Triball and gets the autonomous win point
-void auton3Code(){
-
-}
-
-// Auton code that scores red alliance Triball and 2 green Triballs
-void auton4Code(){
-
-}
-
-// Auton code for the Programming Skills Challenge
-void autonSKcode(){
-
-}
-
 //........................................................................................
 
 // Code for autonomous period based off the selection screen
 // @param version which version of the autonomous code the driver selects
 void autonCode(int version){
-  switch (version)
-  {
+  switch (version){
     case 1:
-      auton1Code();
+      OffensiveAutonCode();
       break;
     case 2:
-      auton2Code();
+      DefensiveAutonCode();
       break;
     case 3:
-      auton3Code();
+      DefensiveAutonCode();
       break;
     case 4:
-      auton4Code();
+      OffensiveAutonCode();
       break;
     case 5:
-      autonSKcode();
+      SkillsAutonCode();
       break;
     default:
       break;

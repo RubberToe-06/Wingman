@@ -20,6 +20,9 @@ void driveModes(brakeType type);
 void autonDrive(directionType driveDirection, float distance, float driveVelocity);
 void autonTurn(turnType turnDirection, float turnAngle, float turnVelocity);
 void autonSetWings(bool value);
+void OffensiveAutonCode();
+void DefensiveAutonCode();
+void SkillsAutonCode();
 void autonCode(int version);
 
 #endif
