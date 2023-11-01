@@ -21,9 +21,7 @@ void LauncherControls(void);
 // Current mapped button(s): ↑ + ↓
 void ElevatorControls(void);
 
-
 // Handles the callback functions for the controller buttons
 void handleButtons(void);
-
 
 #endif

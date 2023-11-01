@@ -8,36 +8,40 @@ int degreesToSpin;
 
 // Shorthand for setting drivetrain velocities
 // @param number how fast the drivetrain will drive
-void driveVelocities(float number) {
-    FLM.setVelocity(number, pct);
-    FRM.setVelocity(number, pct);
-    BLM.setVelocity(number, pct);
-    BRM.setVelocity(number, pct);
+void driveVelocities(float number)
+{
+  FLM.setVelocity(number, pct);
+  FRM.setVelocity(number, pct);
+  BLM.setVelocity(number, pct);
+  BRM.setVelocity(number, pct);
 }
 
 // Shorthand for stopping the drivetrain
-void driveStop() {
-    FLM.stop();
-    FRM.stop();
-    BLM.stop();
-    BRM.stop();
+void driveStop()
+{
+  FLM.stop();
+  FRM.stop();
+  BLM.stop();
+  BRM.stop();
 }
 
 // Shorthand for activating the drivetrain motors all at once
-void driveSpins(directionType FLMr, directionType FRMr, directionType BLMr, directionType BRMr) {
-    FLM.spin(FLMr);
-    FRM.spin(FRMr);
-    BLM.spin(BLMr);
-    BRM.spin(BRMr);
+void driveSpins(directionType FLMr, directionType FRMr, directionType BLMr, directionType BRMr)
+{
+  FLM.spin(FLMr);
+  FRM.spin(FRMr);
+  BLM.spin(BLMr);
+  BRM.spin(BRMr);
 }
 
 // Shorthand for setting a drivetrain stopping mode
 // @param type what type of stopping mode the drivetrain switches to
-void driveModes(brakeType type) {
-    FLM.setStopping(type);
-    FRM.setStopping(type);
-    BLM.setStopping(type);
-    BRM.setStopping(type);
+void driveModes(brakeType type)
+{
+  FLM.setStopping(type);
+  FRM.setStopping(type);
+  BLM.setStopping(type);
+  BRM.setStopping(type);
 }
 
 // Drives the robot in a straight line during autonomous
@@ -48,7 +52,7 @@ void autonDrive(directionType driveDirection, float distance, float driveVelocit
 {
   if (driveDirection == forward)
   {
-    degreesToSpin = (distance * (1/wheelCircum) * 360);
+    degreesToSpin = (distance * (1 / wheelCircum) * 360);
     driveVelocities(driveVelocity);
     FLM.spinFor(fwd, degreesToSpin, deg, false);
     FRM.spinFor(fwd, degreesToSpin, deg, false);
@@ -57,7 +61,7 @@ void autonDrive(directionType driveDirection, float distance, float driveVelocit
   }
   else if (driveDirection == reverse)
   {
-    degreesToSpin = (distance * (1/wheelCircum) * 360);
+    degreesToSpin = (distance * (1 / wheelCircum) * 360);
     driveVelocities(driveVelocity);
     FLM.spinFor(reverse, degreesToSpin, deg, false);
     FRM.spinFor(reverse, degreesToSpin, deg, false);
@@ -81,52 +85,63 @@ void autonTurn(turnType turnDirection, float turnAngle, float turnVelocity)
   // Workaround for being unable to convert turnType to bool
   bool boolDirection;
 
-  if (turnDirection == right){
+  if (turnDirection == right)
+  {
     boolDirection = true;
   }
-  else {
+  else
+  {
     boolDirection = false;
   }
 
-  switch(boolDirection){
-    case true:
+  switch (boolDirection)
+  {
+  case true:
     prevHeading = InertialSensor.heading(deg);
     driveVelocities(turnVelocity);
     driveSpins(forward, reverse, forward, reverse);
     wait(0.2, sec);
-    if (prevHeading + turnAngle < 360){
+    if (prevHeading + turnAngle < 360)
+    {
       waitUntil(InertialSensor.heading(deg) > prevHeading + turnAngle);
-      driveStop(); return;
+      driveStop();
+      return;
     }
-    else{
+    else
+    {
       waitUntil(InertialSensor.heading(deg) > 1 && InertialSensor.heading(deg) < 90);
       waitUntil(InertialSensor.heading(deg) >= (prevHeading + turnAngle) - 360);
-      driveStop(); return;
+      driveStop();
+      return;
     }
-    
 
-    case false:
+  case false:
     prevHeading = InertialSensor.heading(deg);
     driveVelocities(turnVelocity);
     driveSpins(reverse, forward, reverse, forward);
     wait(0.2, sec);
-    if (prevHeading - turnAngle > 0){
+    if (prevHeading - turnAngle > 0)
+    {
       waitUntil(InertialSensor.heading(deg) <= prevHeading - turnAngle);
-      driveStop(); return;
+      driveStop();
+      return;
     }
-    else {
+    else
+    {
       waitUntil(InertialSensor.heading(deg) > 350 && InertialSensor.heading(deg) <= 360);
       waitUntil(InertialSensor.heading(deg) <= 360 - (turnAngle - prevHeading));
-      driveStop(); return;
+      driveStop();
+      return;
     }
   }
 }
 
 // Opens or closes the wings during autonomous
 // @param value specifies what value the solenoids will be set to
-void autonSetWings(bool value) {
-    leftWing.set(value);
-    rightWing.set(value);
+void autonSetWings(bool value)
+{
+  leftWing.set(value);
+  rightWing.set(value);
 }
 
 // AUTONOMOUS ROUTINES
@@ -134,7 +149,8 @@ void autonSetWings(bool value) {
 //........................................................................................
 
 // Autonomous routine for playing on the offensive side
-void OffensiveAutonCode(){
+void OffensiveAutonCode()
+{
   Intake.setStopping(hold);
   autonDrive(forward, 55, 70);
   autonTurn(right, 90, 50);
@@ -155,10 +171,11 @@ void OffensiveAutonCode(){
   Intake.stop();
   autonDrive(forward, 4, 70);
   autonDrive(reverse, 4, 70);
-} 
+}
 
 // Autonomous routine for playing on the defensive side
-void DefensiveAutonCode(){
+void DefensiveAutonCode()
+{
   autonDrive(forward, 55, 60);
   autonTurn(right, 62, 45);
   Intake.spin(reverse, 100, pct);
@@ -168,7 +185,8 @@ void DefensiveAutonCode(){
 }
 
 // Autonomous routine for the Programming Skills Challenge
-void SkillsAutonCode(){
+void SkillsAutonCode()
+{
   autonDrive(forward, 24, 25);
   autonTurn(right, 90, 25);
 }
@@ -176,24 +194,26 @@ void SkillsAutonCode(){
 
 // Code for autonomous period based off the selection screen
 // @param version which version of the autonomous code the driver selects
-void autonCode(int version){
-  switch (version){
-    case 1:
-      OffensiveAutonCode();
-      break;
-    case 2:
-      DefensiveAutonCode();
-      break;
-    case 3:
-      DefensiveAutonCode();
-      break;
-    case 4:
-      OffensiveAutonCode();
-      break;
-    case 5:
-      SkillsAutonCode();
-      break;
-    default:
-      break;
-    }
+void autonCode(int version)
+{
+  switch (version)
+  {
+  case 1:
+    OffensiveAutonCode();
+    break;
+  case 2:
+    DefensiveAutonCode();
+    break;
+  case 3:
+    DefensiveAutonCode();
+    break;
+  case 4:
+    OffensiveAutonCode();
+    break;
+  case 5:
+    SkillsAutonCode();
+    break;
+  default:
+    break;
+  }
 }

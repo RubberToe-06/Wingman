@@ -10,16 +10,16 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// Controller1          controller                    
-// FLM                  motor         12              
-// FRM                  motor         3              
-// BLM                  motor         4               
-// BRM                  motor         2  
-// Intake               motor         1  
-// Launcher             motor         9  
+// Controller1          controller
+// FLM                  motor         12
+// FRM                  motor         3
+// BLM                  motor         4
+// BRM                  motor         2
+// Intake               motor         1
+// Launcher             motor         9
 // InertialSensor       inertial      11
 // leftWing             digital_out   A
-// rightWing            digital_out   B    
+// rightWing            digital_out   B
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -45,7 +45,8 @@ competition Competition;
 /*  not every time that the robot is disabled.                               */
 /*---------------------------------------------------------------------------*/
 
-void pre_auton(void) {
+void pre_auton(void)
+{
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
   StartScreenInit();
@@ -63,7 +64,8 @@ void pre_auton(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
-void autonomous(void) {
+void autonomous(void)
+{
   // ..........................................................................
   autonCode(auton);
   // ..........................................................................
@@ -79,9 +81,11 @@ void autonomous(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
-void usercontrol(void) {
+void usercontrol(void)
+{
   // User control code here, inside the loop
-  while (1) {
+  while (1)
+  {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
@@ -96,17 +100,17 @@ void usercontrol(void) {
     BLM.spin(forward);
     BRM.spin(forward);
 
-
     // ........................................................................
 
-    wait(20, msec); 
+    wait(20, msec);
   }
 }
 
 //
 // Main will set up the competition functions and callbacks.
 //
-int main() {
+int main()
+{
   // Set up callbacks for autonomous and driver control periods.
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
@@ -116,7 +120,8 @@ int main() {
   pre_auton();
 
   // Prevent main from exiting with an infinite loop.
-  while (true) {
+  while (true)
+  {
     wait(100, msec);
   }
 }

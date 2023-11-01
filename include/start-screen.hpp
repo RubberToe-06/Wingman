@@ -7,7 +7,8 @@
 
 extern int auton;
 
-class screenButton {
+class screenButton
+{
 public:
     int X_min;
     int X_max;
