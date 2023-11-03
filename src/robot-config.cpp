@@ -28,6 +28,7 @@ digital_out rightWing = digital_out(Brain.ThreeWirePort.B);
 
 // Manipulator motors
 motor Intake = motor(PORT1, ratio18_1, false);
+motor SideArm = motor(PORT8);
 motor Launcher = motor(PORT9, ratio36_1, false);
 motor Elevator = motor(PORT13, ratio18_1, false);
 //.............................................................

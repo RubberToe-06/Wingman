@@ -16,6 +16,7 @@
 // BLM                  motor         4
 // BRM                  motor         2
 // Intake               motor         1
+// SideArm              motor         8
 // Launcher             motor         9
 // InertialSensor       inertial      11
 // leftWing             digital_out   A

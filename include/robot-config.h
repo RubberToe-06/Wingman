@@ -23,6 +23,8 @@ extern digital_out rightWing;
 // Motor for the Triball intake
 extern motor Intake;
 
+extern motor SideArm;
+
 // Motor for the Triball launcher
 extern motor Launcher;
 

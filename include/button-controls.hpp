@@ -18,6 +18,9 @@ void IntakeControls(void);
 // Current mapped button(s): X
 void LauncherControls(void);
 
+// Current mapped button(s): <- + ->
+void SideArmControls(void);
+
 // Current mapped button(s): ↑ + ↓
 void ElevatorControls(void);
 

@@ -72,6 +72,23 @@ void IntakeControls()
   }
 }
 
+void SideArmControls(void)
+{
+  SideArm.setStopping(hold);
+  if (Controller1.ButtonLeft.pressing())
+  {
+    SideArm.setVelocity(100, pct);
+    SideArm.spinFor(90, deg);
+    SideArm.stop();
+  }
+  else
+  {
+    SideArm.setVelocity(50, pct);
+    SideArm.spinFor(-90, deg);
+    SideArm.stop();
+  }
+}
+
 // Controls the triball launcher
 void LauncherControls(void)
 {
@@ -121,4 +138,8 @@ void handleButtons(void)
   // Controls the Elevation arm
   Controller1.ButtonUp.pressed(ElevatorControls);
   Controller1.ButtonDown.pressed(ElevatorControls);
+
+  // Controls the Side Arm
+  Controller1.ButtonRight.pressed(SideArmControls);
+  Controller1.ButtonLeft.pressed(SideArmControls);
 }
