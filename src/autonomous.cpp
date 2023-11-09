@@ -144,6 +144,19 @@ void autonSetWings(bool value)
   rightWing.set(value);
 }
 
+// Raises or lowers the arm by 90 degrees
+// @param value specifies what the value of the arm is set to (true => down, false => up)
+void autonSetArm(bool value)
+{
+  SideArm.setVelocity(100, pct);
+  if (value)
+  {
+    SideArm.spinFor(-90, deg);
+    return;
+  }
+  SideArm.spinFor(90, deg);
+}
+
 // AUTONOMOUS ROUTINES
 
 //........................................................................................
@@ -152,19 +165,19 @@ void autonSetWings(bool value)
 void OffensiveAutonCode()
 {
   Intake.setStopping(hold);
-  autonDrive(forward, 55, 70);
+  autonDrive(forward, 53, 70);
   autonTurn(right, 90, 50);
   Intake.spin(reverse, 100, pct);
   wait(0.5, sec);
   Intake.stop();
   autonDrive(fwd, 5, 70);
   autonDrive(reverse, 5, 70);
-  autonTurn(left, 145, 50);
+  autonTurn(left, 140, 50);
   Intake.spin(fwd, 100, pct);
   autonDrive(forward, 15, 70);
   wait(0.75, sec);
   Intake.stop();
-  autonTurn(right, 140, 50);
+  autonTurn(right, 135, 50);
   autonDrive(forward, 16, 70);
   Intake.spin(reverse, 100, pct);
   wait(0.5, sec);
@@ -176,19 +189,39 @@ void OffensiveAutonCode()
 // Autonomous routine for playing on the defensive side
 void DefensiveAutonCode()
 {
-  autonDrive(forward, 55, 60);
-  autonTurn(right, 62, 45);
-  Intake.spin(reverse, 100, pct);
+  SideArm.setStopping(hold);
+  Intake.setStopping(hold);
+  SideArm.setVelocity(100, pct);
+  Intake.setVelocity(100, pct);
+  autonDrive(forward, 12, 50);
+  SideArm.spin(reverse);
+  autonDrive(reverse, 10, 50);
+  autonTurn(left, 45, 50);
+  SideArm.stop();
+  SideArm.spinFor(100, deg, false);
+  autonTurn(right, 63, 50);
+  autonDrive(forward, 22, 50);
+  autonTurn(right, 10, 50);
+  Intake.spin(reverse);
   wait(0.5, sec);
   Intake.stop();
-  autonDrive(fwd, 15, 100);
+  autonDrive(reverse, 8, 50);
+  autonTurn(right, 180, 50);
+  autonDrive(reverse, 14, 100);
+  autonDrive(forward, 5, 50);
+  autonTurn(left, 38, 50);
+  autonDrive(forward, 45, 70);
+  autonTurn(left, 27, 50);
+  autonDrive(forward, 30, 80);
 }
 
 // Autonomous routine for the Programming Skills Challenge
 void SkillsAutonCode()
 {
-  autonDrive(forward, 24, 25);
-  autonTurn(right, 90, 25);
+  autonDrive(forward, 24, 50);
+  autonTurn(right, 45 + 180, 25);
+  autonDrive(forward, 25, 50);
+  Launcher.spinFor(45, turns);
 }
 //........................................................................................
 
