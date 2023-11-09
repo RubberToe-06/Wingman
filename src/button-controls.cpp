@@ -78,13 +78,13 @@ void SideArmControls(void)
   if (Controller1.ButtonLeft.pressing())
   {
     SideArm.setVelocity(100, pct);
-    SideArm.spinFor(90, deg);
+    SideArm.spinFor(-90, deg);
     SideArm.stop();
   }
   else
   {
     SideArm.setVelocity(50, pct);
-    SideArm.spinFor(-90, deg);
+    SideArm.spinFor(90, deg);
     SideArm.stop();
   }
 }
