@@ -93,7 +93,7 @@ void SideArmControls(void)
 void LauncherControls(void)
 {
   Launcher.setVelocity(70, pct);
-  Launcher.spin(forward);
+  Launcher.spin(reverse);
   waitUntil(!Controller1.ButtonX.pressing());
   waitUntil(Controller1.ButtonX.pressing());
   Launcher.stop();

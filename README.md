@@ -2,17 +2,17 @@
 
 ![Wingman Logo](logo.png)
 
-Welcome to the official repository of VEX Robotics Team 36830Z - Wingman! This repository contains all the code for the robot and all the extra resources we use. This repository is purely to document code changes and to provide an example of what "professional" robot code looks like to other VRC teams. Thus, we will not be accepting pull requests. 
+Welcome to the official repository of VEX Robotics Team 36830Z - Wingman! This repository contains all the code for the robot and all the extra resources we use. This repository is purely to document code changes and to provide an example of what "professional" robot code looks like to other VRC teams. Thus, we will not be accepting pull requests.
 
 ## About Us
 
-We are Team 36830Z, also known as Wingman. We are from Auburn, AL and representing Auburn High School. 
+We are Team 36830Z, also known as Wingman. We are from Auburn, AL and representing Auburn High School.
 
 ## Team Members
 
 - Drew (Author, coder, designer, team captain)
-- Ian (Builder, notebooker)
-- Howard (Driver, builder, notebooker)
+- Ian (Driver, builder, notebooker)
+- Howard (Builder, notebooker)
 
 ## Table of Contents
 

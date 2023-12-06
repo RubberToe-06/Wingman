@@ -14,13 +14,13 @@ brain Brain;
 controller Controller1 = controller(primary);
 
 // Drivetrain motors
-motor FLM = motor(PORT12, ratio18_1, true);
+motor FLM = motor(PORT6, ratio18_1, true);
 motor FRM = motor(PORT3, ratio18_1, false);
 motor BLM = motor(PORT4, ratio18_1, true);
 motor BRM = motor(PORT2, ratio18_1, false);
 
 // Inertial sensor
-inertial InertialSensor = inertial(PORT11);
+inertial InertialSensor = inertial(PORT5);
 
 // Wing solenoids
 digital_out leftWing = digital_out(Brain.ThreeWirePort.A);

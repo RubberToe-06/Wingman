@@ -11,14 +11,14 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // Controller1          controller
-// FLM                  motor         12
+// FLM                  motor         6
 // FRM                  motor         3
 // BLM                  motor         4
 // BRM                  motor         2
 // Intake               motor         1
 // SideArm              motor         8
 // Launcher             motor         9
-// InertialSensor       inertial      11
+// InertialSensor       inertial      5
 // leftWing             digital_out   A
 // rightWing            digital_out   B
 // ---- END VEXCODE CONFIGURED DEVICES ----
