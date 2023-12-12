@@ -17,7 +17,7 @@ controller Controller1 = controller(primary);
 motor FLM = motor(PORT6, ratio18_1, true);
 motor FRM = motor(PORT3, ratio18_1, false);
 motor BLM = motor(PORT4, ratio18_1, true);
-motor BRM = motor(PORT2, ratio18_1, false);
+motor BRM = motor(PORT8, ratio18_1, false);
 
 // Inertial sensor
 inertial InertialSensor = inertial(PORT5);
@@ -30,7 +30,8 @@ digital_out rightWing = digital_out(Brain.ThreeWirePort.B);
 motor Intake = motor(PORT1, ratio18_1, false);
 motor SideArm = motor(PORT8);
 motor Launcher = motor(PORT9, ratio36_1, false);
-motor Elevator = motor(PORT13, ratio18_1, false);
+motor Elevator1 = motor(PORT10, ratio18_1, false);
+motor Elevator2 = motor(PORT7, ratio18_1, false);
 //.............................................................
 
 // VEXcode generated functions

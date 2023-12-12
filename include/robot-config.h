@@ -29,7 +29,8 @@ extern motor SideArm;
 extern motor Launcher;
 
 // Motor for the elevation arm
-extern motor Elevator;
+extern motor Elevator1;
+extern motor Elevator2;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

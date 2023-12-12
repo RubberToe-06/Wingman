@@ -104,18 +104,16 @@ void ElevatorControls()
 {
   if (Controller1.ButtonUp.pressing())
   {
-    Elevator.spin(forward);
-    waitUntil(!Controller1.ButtonUp.pressing());
-    waitUntil(Controller1.ButtonUp.pressing());
-    Elevator.stop();
+    Elevator1.spin(forward);
+    Elevator2.spin(reverse);
   }
   else if (Controller1.ButtonDown.pressing())
   {
-    Elevator.spin(reverse);
-    waitUntil(!Controller1.ButtonDown.pressing());
-    waitUntil(Controller1.ButtonDown.pressing());
-    Elevator.stop();
+    Elevator1.spin(reverse);
+    Elevator2.spin(forward);
   }
+  waitUntil(!Controller1.ButtonUp.pressing() && !Controller1.ButtonDown.pressing());
+  Elevator1.stop();
 }
 
 // Handles the callback functions for the controller buttons
