@@ -177,7 +177,7 @@ void OffensiveAutonCode()
   autonDrive(forward, 15, 70);
   wait(0.75, sec);
   Intake.stop();
-  autonTurn(right, 135, 50);
+  autonTurn(right, 140, 50);
   autonDrive(forward, 16, 70);
   Intake.spin(reverse, 100, pct);
   wait(0.5, sec);

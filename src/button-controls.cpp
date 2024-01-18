@@ -102,18 +102,24 @@ void LauncherControls(void)
 // Controls the elevation arm
 void ElevatorControls()
 {
+  Elevator1.setVelocity(67, pct);
+  Elevator2.setVelocity(67, pct);
   if (Controller1.ButtonUp.pressing())
-  {
-    Elevator1.spin(forward);
-    Elevator2.spin(reverse);
-  }
-  else if (Controller1.ButtonDown.pressing())
   {
     Elevator1.spin(reverse);
     Elevator2.spin(forward);
+    waitUntil(!Controller1.ButtonUp.pressing());
+    Elevator1.stop();
+    Elevator2.stop();
   }
-  waitUntil(!Controller1.ButtonUp.pressing() && !Controller1.ButtonDown.pressing());
-  Elevator1.stop();
+  if (Controller1.ButtonDown.pressing())
+  {
+    Elevator1.spin(forward);
+    Elevator2.spin(reverse);
+    waitUntil(!Controller1.ButtonDown.pressing());
+    Elevator1.stop();
+    Elevator2.stop();
+  }
 }
 
 // Handles the callback functions for the controller buttons
@@ -133,7 +139,7 @@ void handleButtons(void)
   // Toggles the Triball launcher
   Controller1.ButtonX.pressed(LauncherControls);
 
-  // Controls the Elevation arm
+  // Controls the Elevation/Blocker arms
   Controller1.ButtonUp.pressed(ElevatorControls);
   Controller1.ButtonDown.pressed(ElevatorControls);
 
