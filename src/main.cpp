@@ -12,9 +12,9 @@
 // Launcher             motor         9
 // Elevator1            motor         1
 // Elevator2            motor         7
-// InertialSensor       inertial      5
+// InertialSensor       inertial      11
 // leftWing             digital_out   A
-// rightWing            digital_out   B
+// rightWing            digital_out   H
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"

@@ -10,7 +10,7 @@ void FlipControls()
   Controller1.rumble(".");
 }
 
-// Toggles the wings on the sides of the robot
+// Code for the side wings
 void WingControls(void)
 {
   if (Controller1.ButtonL2.pressing())
@@ -37,7 +37,7 @@ void WingControls(void)
   }
 }
 
-// Toggles the intake motor forwards or reverse
+// Code for the triball intake
 void IntakeControls()
 {
   Intake.setStopping(hold);
@@ -72,24 +72,29 @@ void IntakeControls()
   }
 }
 
+// Code for the AWP arm
 void SideArmControls(void)
 {
   SideArm.setStopping(hold);
-  if (Controller1.ButtonLeft.pressing())
+  if (Controller1.ButtonRight.pressing())
   {
     SideArm.setVelocity(100, pct);
-    SideArm.spinFor(-90, deg);
+    SideArm.spinFor(90, deg);
     SideArm.stop();
+    waitUntil(Controller1.ButtonLeft.pressing());
+    SideArmControls();
   }
   else
   {
     SideArm.setVelocity(50, pct);
-    SideArm.spinFor(90, deg);
+    SideArm.spinFor(-90, deg);
     SideArm.stop();
+    waitUntil(Controller1.ButtonRight.pressing());
+    SideArmControls();
   }
 }
 
-// Controls the triball launcher
+// Code for the triball launcher
 void LauncherControls(void)
 {
   Launcher.setVelocity(70, pct);
@@ -99,23 +104,21 @@ void LauncherControls(void)
   Launcher.stop();
 }
 
-// Controls the elevation arm
+// Code for the elevation/blocker
 void ElevatorControls()
 {
-  Elevator1.setVelocity(67, pct);
-  Elevator2.setVelocity(67, pct);
   if (Controller1.ButtonUp.pressing())
   {
-    Elevator1.spin(reverse);
-    Elevator2.spin(forward);
+    Elevator1.spin(reverse, 12, volt);
+    Elevator2.spin(forward, 12, volt);
     waitUntil(!Controller1.ButtonUp.pressing());
     Elevator1.stop();
     Elevator2.stop();
   }
   if (Controller1.ButtonDown.pressing())
   {
-    Elevator1.spin(forward);
-    Elevator2.spin(reverse);
+    Elevator1.spin(forward, 12, volt);
+    Elevator2.spin(reverse, 12, volt);
     waitUntil(!Controller1.ButtonDown.pressing());
     Elevator1.stop();
     Elevator2.stop();

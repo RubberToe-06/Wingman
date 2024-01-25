@@ -20,11 +20,11 @@ motor BLM = motor(PORT4, ratio18_1, true);
 motor BRM = motor(PORT8, ratio18_1, false);
 
 // Inertial sensor
-inertial InertialSensor = inertial(PORT5);
+inertial InertialSensor = inertial(PORT11);
 
 // Wing solenoids
 digital_out leftWing = digital_out(Brain.ThreeWirePort.A);
-digital_out rightWing = digital_out(Brain.ThreeWirePort.B);
+digital_out rightWing = digital_out(Brain.ThreeWirePort.H);
 
 // Manipulator motors
 motor Intake = motor(PORT10, ratio18_1, false);

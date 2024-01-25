@@ -12,7 +12,7 @@ void FlipControls(void);
 // Current mapped button(s): L2 + R2
 void WingControls(void);
 
-// Current mapped button(s): A
+// Current mapped button(s): A + B
 void IntakeControls(void);
 
 // Current mapped button(s): X

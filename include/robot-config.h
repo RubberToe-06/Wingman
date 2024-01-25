@@ -23,12 +23,13 @@ extern digital_out rightWing;
 // Motor for the Triball intake
 extern motor Intake;
 
+// Motor for the AWP arm
 extern motor SideArm;
 
 // Motor for the Triball launcher
 extern motor Launcher;
 
-// Motor for the elevation arm
+// Motors for the elevator/blocker
 extern motor Elevator1;
 extern motor Elevator2;
 

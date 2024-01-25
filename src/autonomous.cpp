@@ -189,32 +189,22 @@ void OffensiveAutonCode()
 // Autonomous routine for playing on the defensive side
 void DefensiveAutonCode()
 {
-  Intake.setVelocity(100, pct);
-  Intake.spin(reverse);
-  SideArm.setStopping(hold);
-  Intake.setStopping(hold);
-  SideArm.setVelocity(100, pct);
-  Intake.setVelocity(100, pct);
-  autonDrive(forward, 12, 50);
   SideArm.spin(reverse);
-  autonDrive(reverse, 10, 50);
-  autonTurn(left, 45, 50);
-  SideArm.stop();
-  SideArm.spinFor(100, deg, false);
-  autonTurn(right, 48, 50);
-  autonDrive(forward, 24, 50);
-  autonTurn(right, 10, 50);
   Intake.spin(reverse);
-  wait(0.5, sec);
+  wait(1, sec);
+  Elevator1.spin(forward, 12, volt);
+  Elevator2.spin(reverse, 12, volt);
+  autonTurn(left, 90, 50);
+  SideArm.stop();
   Intake.stop();
-  autonDrive(reverse, 8, 50);
-  autonTurn(right, 180, 50);
-  autonDrive(reverse, 14, 100);
-  autonDrive(forward, 5, 50);
-  autonTurn(left, 38, 50);
-  autonDrive(forward, 35, 70);
-  // autonTurn(left, 27, 50);
-  // autonDrive(forward, 36, 80);
+  SideArm.spinFor(90, deg);
+  autonTurn(right, 55, 50);
+  autonDrive(reverse, 24, 50);
+  autonTurn(left, 3, 25);
+  autonDrive(reverse, 16, 25);
+  wait(2, sec);
+  Elevator1.stop();
+  Elevator2.stop();
 }
 
 // Autonomous routine for the Programming Skills Challenge
