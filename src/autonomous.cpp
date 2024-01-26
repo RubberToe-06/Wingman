@@ -165,25 +165,22 @@ void autonSetArm(bool value)
 void OffensiveAutonCode()
 {
   Intake.setStopping(hold);
-  autonDrive(forward, 53, 70);
-  autonTurn(right, 90, 50);
+  SideArm.setStopping(hold);
+  autonDrive(forward, 53, 45);
+  autonTurn(right, 86, 25);
   Intake.spin(reverse, 100, pct);
+  autonDrive(forward, 12, 50);
   wait(0.5, sec);
   Intake.stop();
-  autonDrive(fwd, 5, 70);
-  autonDrive(reverse, 5, 70);
-  autonTurn(left, 140, 50);
-  Intake.spin(fwd, 100, pct);
-  autonDrive(forward, 15, 70);
-  wait(0.75, sec);
-  Intake.stop();
-  autonTurn(right, 140, 50);
-  autonDrive(forward, 16, 70);
+  autonDrive(reverse, 12, 50);
+  autonTurn(left, 120, 30);
+  Intake.spin(forward, 100, pct);
+  autonDrive(forward, 8, 50);
+  autonTurn(right, 120, 50);
+  autonDrive(forward, 12, 50);
   Intake.spin(reverse, 100, pct);
-  wait(0.5, sec);
-  Intake.stop();
-  autonDrive(forward, 4, 70);
-  autonDrive(reverse, 4, 70);
+  autonDrive(forward, 6, 50);
+  autonDrive(reverse, 6, 50);
 }
 
 // Autonomous routine for playing on the defensive side
@@ -191,7 +188,7 @@ void DefensiveAutonCode()
 {
   SideArm.spin(reverse);
   Intake.spin(reverse);
-  wait(1, sec);
+  wait(0.5, sec);
   Elevator1.spin(forward, 12, volt);
   Elevator2.spin(reverse, 12, volt);
   autonTurn(left, 90, 50);
@@ -223,17 +220,11 @@ void autonCode(int version)
 {
   switch (version)
   {
-  case 1:
+  case 1 || 4:
     OffensiveAutonCode();
     break;
-  case 2:
+  case 2 || 3:
     DefensiveAutonCode();
-    break;
-  case 3:
-    DefensiveAutonCode();
-    break;
-  case 4:
-    OffensiveAutonCode();
     break;
   case 5:
     SkillsAutonCode();
