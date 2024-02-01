@@ -3,18 +3,19 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // Controller1          controller
-// FLM                  motor         6
-// FRM                  motor         20
-// BLM                  motor         4
-// BRM                  motor         8
-// Intake               motor         10
-// SideArm              motor         19
-// Launcher             motor         9
-// Elevator1            motor         1
-// Elevator2            motor         7
-// InertialSensor       inertial      11
+// FLM                  motor         21
+// FRM                  motor         9
+// BLM                  motor         8 // REPLACE WIRE
+// BRM                  motor         11
+// Intake               motor         6
+// SideArm              motor         7
+// Launcher             motor         10
+// Elevator1            motor         2
+// Elevator2            motor         3
+// InertialSensor       inertial      20
 // leftWing             digital_out   A
 // rightWing            digital_out   H
+// radio                radio         1
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"

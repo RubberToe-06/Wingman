@@ -97,7 +97,8 @@ void SideArmControls(void)
 // Code for the triball launcher
 void LauncherControls(void)
 {
-  Launcher.setVelocity(70, pct);
+  Launcher.setStopping(coast);
+  Launcher.setVelocity(100, pct);
   Launcher.spin(reverse);
   waitUntil(!Controller1.ButtonX.pressing());
   waitUntil(Controller1.ButtonX.pressing());
@@ -107,22 +108,30 @@ void LauncherControls(void)
 // Code for the elevation/blocker
 void ElevatorControls()
 {
+  Elevator1.setStopping(hold);
+  Elevator2.setStopping(hold);
   if (Controller1.ButtonUp.pressing())
   {
-    Elevator1.spin(reverse, 12, volt);
-    Elevator2.spin(forward, 12, volt);
+    Elevator1.spin(reverse, 10, volt);
+    Elevator2.spin(forward, 10, volt);
     waitUntil(!Controller1.ButtonUp.pressing());
     Elevator1.stop();
     Elevator2.stop();
   }
   if (Controller1.ButtonDown.pressing())
   {
-    Elevator1.spin(forward, 12, volt);
-    Elevator2.spin(reverse, 12, volt);
+    Elevator1.spin(forward, 10, volt);
+    Elevator2.spin(reverse, 10, volt);
     waitUntil(!Controller1.ButtonDown.pressing());
     Elevator1.stop();
     Elevator2.stop();
   }
+}
+
+// Code that helps Ian not be dumb and elevate properly
+void IanProof()
+{
+  SideArm.spin(fwd, 12, volt);
 }
 
 // Handles the callback functions for the controller buttons
@@ -149,4 +158,6 @@ void handleButtons(void)
   // Controls the Side Arm
   Controller1.ButtonRight.pressed(SideArmControls);
   Controller1.ButtonLeft.pressed(SideArmControls);
+
+  Controller1.ButtonR1.pressed(IanProof);
 }
